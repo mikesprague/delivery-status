@@ -1,0 +1,29 @@
+{
+  "name": "Delivery Status",
+  "description": "Chrome extension that reloads USPS/UPS/FedEx tracking pages every 5 minutes and changes the favicon to indicate 'delivered'",
+  "author": "Michael Sprague",
+  "short_name": "Delivery Status",
+  "icons": {
+    "128": "/images/green-check-mark.png"
+  },
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "https://*.usps.com/*",
+    "https://*.ups.com/*",
+    "https://*.fedex.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://tools.usps.com/*",
+        "https://wwwapps.ups.com/*",
+        "https://www.ups.com/*",
+        "https://www.fedex.com/*"
+      ],
+      "js": ["/js/bundle.js"]
+    }
+  ]
+}
