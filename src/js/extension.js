@@ -1,8 +1,6 @@
 import {
   appConfig,
-  isFedEx,
-  isUPS,
-  isUSPS,
+  currentService,
   reloadWindow,
 } from './modules/helpers';
 
@@ -14,19 +12,19 @@ const updateDelivered = () => {
   const linkTag = document.createElement('link');
   linkTag.type = 'image/png';
   linkTag.rel = 'shortcut icon';
-  linkTag.href = appConfig.greenCheckmarkImageUrl;
-  window.document.title = `📦 DELIVERED | ${window.document.title}`;
+  linkTag.href = appConfig.favicons.delivered;
+  window.document.title = `${appConfig.titlePrefix.delivered} | ${window.document.title}`;
   document.getElementsByTagName('head')[0].appendChild(linkTag);
 };
 
 const initExtension = () => {
+  const deliveryService = currentService();
   let deliveryStatus = null;
   const timerHandle = setInterval(reloadWindow, appConfig.reloadInterval);
-  if (isFedEx()) {
+  if (deliveryService === 'fedex') {
     const doFedEx = () => {
-      const fedExDeliveryStatusEl = document.querySelector(appConfig.fedExDeliverySelector);
+      const fedExDeliveryStatusEl = document.querySelector(appConfig.selectors.fedEx);
       deliveryStatus = fedExDeliveryStatusEl.innerText.trim().toLowerCase();
-      console.log('deliveryStatus: ', deliveryStatus);
       if (deliveryStatus === 'delivered') {
         updateDelivered();
       }
@@ -34,12 +32,12 @@ const initExtension = () => {
     // fedex does rendering post load and elements aren't available
     setTimeout(doFedEx, 5000);
   }
-  if (isUSPS()) {
-    const uspsDeliveryStatusEl = document.querySelector(appConfig.uspsDeliverySelector);
+  if (deliveryService === 'usps') {
+    const uspsDeliveryStatusEl = document.querySelector(appConfig.selectors.usps);
     deliveryStatus = uspsDeliveryStatusEl.innerText.trim().toLowerCase();
   }
-  if (isUPS()) {
-    const upsDeliveryStatusEl = document.querySelector(appConfig.upsDeliverySelector);
+  if (deliveryService === 'ups') {
+    const upsDeliveryStatusEl = document.querySelector(appConfig.selectors.ups);
     deliveryStatus = upsDeliveryStatusEl.innerText.trim().toLowerCase();
   }
   if (deliveryStatus === 'delivered') {
