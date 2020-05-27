@@ -1,6 +1,6 @@
 {
   "name": "delivery-status",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Chrome extension that reloads USPS & UPS tracking pages every 5 minutes and changes the favicon to indicate 'delivered'",
   "private": true,
   "engines": {
