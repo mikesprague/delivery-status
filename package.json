@@ -33,9 +33,9 @@
   "dependencies": {
     "axios": "^0.19.2",
     "cross-env": "^7.0.2",
-    "dayjs": "^1.8.27",
+    "dayjs": "^1.8.28",
     "dotenv": "^8.2.0",
-    "snyk": "^1.330.2"
+    "snyk": "^1.332.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
