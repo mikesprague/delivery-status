@@ -45,13 +45,12 @@ const initExtension = () => {
         break;
       }
     };
+    if (deliveryStatus === 'delivered') {
+      updateDelivered();
+      clearInterval(timerHandle);
+    }
   };
-
   setTimeout(doChecks, 5000);
-  if (deliveryStatus === 'delivered') {
-    updateDelivered();
-    clearInterval(timerHandle);
-  }
 };
 
 document.onreadystatechange = () => {
