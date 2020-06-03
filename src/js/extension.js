@@ -21,25 +21,33 @@ const initExtension = () => {
   const deliveryService = currentService();
   let deliveryStatus = null;
   const timerHandle = setInterval(reloadWindow, appConfig.reloadInterval);
-  if (deliveryService === 'fedex') {
-    const doFedEx = () => {
-      const fedExDeliveryStatusEl = document.querySelector(appConfig.selectors.fedEx);
-      deliveryStatus = fedExDeliveryStatusEl.innerText.trim().toLowerCase();
-      if (deliveryStatus === 'delivered') {
-        updateDelivered();
+  const doChecks = () => {
+    switch(deliveryService) {
+      case('fedex'): {
+        const fedExDeliveryStatusEl = document.querySelector(appConfig.selectors.fedEx);
+        deliveryStatus = fedExDeliveryStatusEl.innerText.trim().toLowerCase();
+        break;
+      }
+      case('usps'): {
+        const uspsDeliveryStatusEl = document.querySelector(appConfig.selectors.usps);
+        deliveryStatus = uspsDeliveryStatusEl.innerText.trim().toLowerCase();
+        break;
+      }
+      case('ups'): {
+        const upsDeliveryStatusEl = document.getElementById(appConfig.selectors.ups);
+        deliveryStatus = upsDeliveryStatusEl.innerText.trim().toLowerCase();
+        break;
+      }
+      default: {
+        // should never get here
+        console.log('Oops... something went wrong.');
+        console.log('deliveryService: ', deliveryService);
+        break;
       }
     };
-    // fedex does rendering post load and elements aren't available
-    setTimeout(doFedEx, 5000);
-  }
-  if (deliveryService === 'usps') {
-    const uspsDeliveryStatusEl = document.querySelector(appConfig.selectors.usps);
-    deliveryStatus = uspsDeliveryStatusEl.innerText.trim().toLowerCase();
-  }
-  if (deliveryService === 'ups') {
-    const upsDeliveryStatusEl = document.getElementById(appConfig.selectors.ups);
-    deliveryStatus = upsDeliveryStatusEl.innerText.trim().toLowerCase();
-  }
+  };
+
+  setTimeout(doChecks, 5000);
   if (deliveryStatus === 'delivered') {
     updateDelivered();
     clearInterval(timerHandle);
