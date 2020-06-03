@@ -12,7 +12,7 @@ export const appConfig = {
   reloadInterval: 300000, // 5 minutes ((1000 * 60) * 5)
   selectors: {
     fedEx: '.snapshotController_addr_label.dest',
-    ups: '#stApp_txtPackageStatus',
+    ups: 'stApp_txtPackageStatus',
     usps: 'div.delivery_status > h2',
   },
 };

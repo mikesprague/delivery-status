@@ -37,7 +37,7 @@ const initExtension = () => {
     deliveryStatus = uspsDeliveryStatusEl.innerText.trim().toLowerCase();
   }
   if (deliveryService === 'ups') {
-    const upsDeliveryStatusEl = document.querySelector(appConfig.selectors.ups);
+    const upsDeliveryStatusEl = document.getElementById(appConfig.selectors.ups);
     deliveryStatus = upsDeliveryStatusEl.innerText.trim().toLowerCase();
   }
   if (deliveryStatus === 'delivered') {
