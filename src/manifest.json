@@ -6,14 +6,15 @@
   "icons": {
     "128": "/images/delivered.png"
   },
-  "version": "0.0.7",
+  "version": "0.0.8",
   "manifest_version": 2,
   "permissions": [
     "activeTab",
     "declarativeContent",
     "https://*.usps.com/*",
     "https://*.ups.com/*",
-    "https://*.fedex.com/*"
+    "https://*.fedex.com/*",
+    "https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/*"
   ],
   "content_scripts": [
     {
