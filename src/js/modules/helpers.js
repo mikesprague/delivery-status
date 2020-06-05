@@ -5,9 +5,9 @@ export const appConfig = {
     outForDelivery: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/out-for-delivery.png',
   },
   titlePrefix: {
-    delivered: '📦 DELIVERED ',
-    inTransit: '✈ In Transit',
-    outForDelivery: '🚚 Out For Delivery',
+    delivered: 'DELIVERED ',
+    inTransit: 'In Transit',
+    outForDelivery: 'Out For Delivery',
   },
   reloadInterval: 300000, // 5 minutes ((1000 * 60) * 5)
   selectors: {
