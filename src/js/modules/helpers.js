@@ -1,8 +1,8 @@
 export const appConfig = {
   favicons: {
-    delivered: 'https://www.providesupport.com/blog/wp-content/uploads/2013/08/green-check-mark.png',
-    inTransit: '',
-    outForDelivery: '',
+    delivered: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/delivered.png',
+    inTransit: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/in-transit.png',
+    outForDelivery: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/out-for-delivery.png',
   },
   titlePrefix: {
     delivered: '📦 DELIVERED ',
