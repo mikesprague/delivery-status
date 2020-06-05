@@ -35,7 +35,7 @@
     "cross-env": "^7.0.2",
     "dayjs": "^1.8.28",
     "dotenv": "^8.2.0",
-    "snyk": "^1.335.0"
+    "snyk": "^1.336.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
