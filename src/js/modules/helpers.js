@@ -4,6 +4,11 @@ export const appConfig = {
     inTransit: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/in-transit.png',
     outForDelivery: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/out-for-delivery.png',
   },
+  statusStrings: {
+    delivered: ['delivered'],
+    inTransit: ['in transit', 'on its way'],
+    outForDelivery: ['out for delivery'],
+  },
   titlePrefix: {
     delivered: 'DELIVERED ',
     inTransit: 'In Transit',
