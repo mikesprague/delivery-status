@@ -8,14 +8,13 @@
     "npm": ">= 6.x"
   },
   "scripts": {
-    "build": "npm run clean && npm run webpack",
-    "build:zip": "npm run clean && npm run webpack && npm run zip",
+    "build": "npm run clean && npm run webpack && npm run zip",
     "clean": "rm -rf ./public",
     "prepublish": "npm run snyk-protect",
     "snyk-protect": "snyk protect",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "cross-env NODE_ENV=production webpack -p --colors --display minimal",
-    "zip": "cd public && zip -r my-start-page.zip ./"
+    "zip": "cd public && zip -r delivery-status-extension.zip ./"
   },
   "keywords": [],
   "repository": {
