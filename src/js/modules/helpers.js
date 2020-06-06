@@ -6,7 +6,7 @@ export const appConfig = {
   },
   statusStrings: {
     delivered: ['delivered'],
-    inTransit: ['in transit', 'on its way'],
+    inTransit: ['in transit', 'on its way', 'in-transit'],
     outForDelivery: ['out for delivery'],
   },
   titlePrefix: {
