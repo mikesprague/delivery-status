@@ -19,6 +19,7 @@ export const appConfig = {
     fedEx: '.snapshotController_addr_label.dest',
     ups: 'stApp_txtPackageStatus',
     usps: 'div.delivery_status > h2',
+    lasership: '.event-banner-on',
   },
 };
 
@@ -31,7 +32,7 @@ export function reloadWindow() {
 };
 
 export function currentService() {
-  const domains = ['fedex.com', 'ups.com', 'usps.com'];
+  const domains = ['fedex.com', 'ups.com', 'usps.com', 'lasership.com'];
   let returnVal = null;
   domains.forEach(domain => {
     if (window.location.hostname.includes(domain)) {

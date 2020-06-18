@@ -51,17 +51,22 @@ const initExtension = () => {
     switch(deliveryService) {
       case('fedex'): {
         const fedExDeliveryStatusEl = document.querySelector(appConfig.selectors.fedEx);
-        deliveryStatus = fedExDeliveryStatusEl.innerText.trim().toLowerCase();
+        deliveryStatus = fedExDeliveryStatusEl.textContent.trim().toLowerCase();
         break;
       }
       case('usps'): {
         const uspsDeliveryStatusEl = document.querySelector(appConfig.selectors.usps);
-        deliveryStatus = uspsDeliveryStatusEl.innerText.trim().toLowerCase();
+        deliveryStatus = uspsDeliveryStatusEl.textContent.trim().toLowerCase();
         break;
       }
       case('ups'): {
         const upsDeliveryStatusEl = document.getElementById(appConfig.selectors.ups);
-        deliveryStatus = upsDeliveryStatusEl.innerText.trim().toLowerCase();
+        deliveryStatus = upsDeliveryStatusEl.textContent.trim().toLowerCase();
+        break;
+      }
+      case('lasership'): {
+        const lasershipDeliveryStatusEl = document.querySelector(appConfig.selectors.lasership);
+        deliveryStatus = lasershipDeliveryStatusEl.textContent.trim().toLowerCase();
         break;
       }
       default: {
