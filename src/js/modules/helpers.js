@@ -23,6 +23,12 @@ export const appConfig = {
     usps: 'div.delivery_status > h2',
     lasership: '.event-banner-on',
   },
+  overlaySelectors: {
+    fedEx: '#container',
+    ups: '.iw_viewport-wrapper',
+    usps: '#tracking_page_wrapper',
+    lasership: '#header',
+  }
 };
 
 export function handleError(error, timerHandle = null) {
@@ -30,25 +36,6 @@ export function handleError(error, timerHandle = null) {
     clearInterval(timerHandle);
   }
   console.error(error);
-}
-
-export function initOverlay() {
-  const overlayMarkup = `
-    <div class="extension-overlay">
-      <h2><img class="delivery-status-icon">&nbsp;<span class="delivery-status-text"></span></h2>
-      <h3>Page will reload in <span class="time-remaining">5:00</span></h3>
-    </div>
-  `;
-  document.querySelector('.iw_viewport-wrapper').insertAdjacentHTML('afterend', overlayMarkup);
-  const timeNow = dayjs();
-  const timeToReload = dayjs(timeNow).add(appConfig.reloadInterval, 'millisecond');
-  const updateTimer = () => {
-    const timeRemaining = dayjs(timeToReload).diff(dayjs());
-    document.querySelector('.time-remaining').textContent = dayjs(timeRemaining).format('m:ss');
-    // console.log();
-  };
-  const clockTimerHandle = setInterval(updateTimer, 500);
-  return clockTimerHandle;
 }
 
 export function reloadWindow() {
@@ -64,4 +51,27 @@ export function currentService() {
     }
   });
   return returnVal;
+}
+
+export function initOverlay() {
+  const overlayMarkup = `
+    <div class="extension-overlay">
+      <h2><img class="delivery-status-icon">&nbsp;<span class="delivery-status-text"></span></h2>
+      <h3>Page will reload in <span class="time-remaining">5:00</span></h3>
+    </div>
+  `;
+  const deliveryService = currentService();
+  if (deliveryService === 'fedex') {
+    document.querySelector('body').innerHTML += overlayMarkup;
+  } else {
+    document.querySelector(appConfig.overlaySelectors[deliveryService]).insertAdjacentHTML('afterend', overlayMarkup);
+  }
+  const timeNow = dayjs();
+  const timeToReload = dayjs(timeNow).add(appConfig.reloadInterval, 'millisecond');
+  const updateTimer = () => {
+    const timeRemaining = dayjs(timeToReload).diff(dayjs());
+    document.querySelector('.time-remaining').textContent = dayjs(timeRemaining).format('m:ss');
+  };
+  const clockTimerHandle = setInterval(updateTimer, 500);
+  return clockTimerHandle;
 }
