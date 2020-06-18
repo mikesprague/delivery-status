@@ -26,7 +26,8 @@
         "https://www.fedex.com/*",
         "https://www.lasership.com/track*"
       ],
-      "js": ["/js/bundle.js"]
+      "js": ["/js/bundle.js"],
+      "css": ["/css/styles.css"]
     }
   ]
 }

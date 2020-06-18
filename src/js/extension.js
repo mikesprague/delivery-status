@@ -1,6 +1,9 @@
+import '../scss/styles.scss';
 import {
   appConfig,
   currentService,
+  handleError,
+  initOverlay,
   reloadWindow,
 } from './modules/helpers';
 
@@ -44,58 +47,84 @@ const updateInTransit = () => {
 };
 
 const initExtension = () => {
+  const clockTimerHandle = initOverlay();
   const deliveryService = currentService();
   let deliveryStatus = null;
   const timerHandle = setInterval(reloadWindow, appConfig.reloadInterval);
-  const doChecks = () => {
-    switch(deliveryService) {
-      case('fedex'): {
-        const fedExDeliveryStatusEl = document.querySelector(appConfig.selectors.fedEx);
-        deliveryStatus = fedExDeliveryStatusEl.textContent.trim().toLowerCase();
-        break;
-      }
-      case('usps'): {
-        const uspsDeliveryStatusEl = document.querySelector(appConfig.selectors.usps);
-        deliveryStatus = uspsDeliveryStatusEl.textContent.trim().toLowerCase();
-        break;
-      }
-      case('ups'): {
-        const upsDeliveryStatusEl = document.getElementById(appConfig.selectors.ups);
-        deliveryStatus = upsDeliveryStatusEl.textContent.trim().toLowerCase();
-        break;
-      }
-      case('lasership'): {
-        const lasershipDeliveryStatusEl = document.querySelector(appConfig.selectors.lasership);
-        deliveryStatus = lasershipDeliveryStatusEl.textContent.trim().toLowerCase();
-        break;
-      }
-      default: {
-        // should never get here
-        console.log('Oops... something went wrong.');
-        console.log('deliveryService: ', deliveryService);
-        break;
-      }
+  try {
+    const doChecks = () => {
+      switch (deliveryService) {
+        case ('fedex'): {
+          const fedExDeliveryStatusEl = document.querySelector(appConfig.selectors.fedEx);
+          deliveryStatus = fedExDeliveryStatusEl.textContent.trim().toLowerCase();
+          break;
+        }
+        case ('usps'): {
+          const uspsDeliveryStatusEl = document.querySelector(appConfig.selectors.usps);
+          deliveryStatus = uspsDeliveryStatusEl.textContent.trim().toLowerCase();
+          break;
+        }
+        case ('ups'): {
+          const upsDeliveryStatusEl = document.getElementById(appConfig.selectors.ups);
+          deliveryStatus = upsDeliveryStatusEl.textContent.trim().toLowerCase();
+          break;
+        }
+        case ('lasership'): {
+          const lasershipDeliveryStatusEl = document.querySelector(appConfig.selectors.lasership);
+          deliveryStatus = lasershipDeliveryStatusEl.textContent.trim().toLowerCase();
+          break;
+        }
+        default: {
+          // should never get here
+          console.log('Oops... something went wrong.');
+          console.log('deliveryService: ', deliveryService);
+          break;
+        }
+      };
+      const statusImage = document.querySelector('.delivery-status-icon');
+      const statusText = document.querySelector('.delivery-status-text');
+      appConfig.statusStrings.delivered.forEach(statusString => {
+        if (deliveryStatus.includes(statusString)) {
+          statusImage.src = appConfig.favicons.delivered;
+          statusText.classList.add('delivered');
+          statusText.textContent = 'Delivered';
+          clearInterval(clockTimerHandle);
+          document.querySelector('.extension-overlay h3').remove();
+          updateDelivered();
+          clearInterval(timerHandle);
+        }
+      });
+      appConfig.statusStrings.outForDelivery.forEach(statusString => {
+        if (deliveryStatus.includes(statusString)) {
+          statusImage.src = appConfig.favicons.outForDelivery;
+          statusText.classList.add('out-for-delivery');
+          statusText.textContent = 'Out for Delivery';
+          updateOutForDelivery();
+        }
+      });
+      appConfig.statusStrings.inTransit.forEach(statusString => {
+        if (deliveryStatus.includes(statusString)) {
+          statusImage.src = appConfig.favicons.inTransit;
+          statusText.classList.add('in-transit');
+          statusText.textContent = 'In Transit';
+          updateInTransit();
+        }
+      });
     };
-    appConfig.statusStrings.delivered.forEach(statusString => {
-      if (deliveryStatus.includes(statusString)) {
-        updateDelivered();
-        clearInterval(timerHandle);
-      }
-    });
-    appConfig.statusStrings.outForDelivery.forEach(statusString => {
-      if (deliveryStatus.includes(statusString)) {
-        updateOutForDelivery();
-      }
-    });
-    appConfig.statusStrings.inTransit.forEach(statusString => {
-      if (deliveryStatus.includes(statusString)) {
-        updateInTransit();
-      }
-    });
-
-  };
-  setTimeout(doChecks, 5000);
+    setTimeout(doChecks, 5000);
+  } catch (error) {
+    handleError(error, timerHandle);
+  }
 };
+
+// - [x] stop reload (clearInterval) on error
+// - [x] add overlay with:
+//   - [x] absolute positioned and semi-transparent
+//   - [x] reload countdown timer
+// - [ ] add build steps to readme
+// - [ ] take screenshots and create graphic for dev dashboard
+// - [ ] release in chrome store
+// - [ ] release in mozilla add-ons
 
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {

@@ -1,11 +1,46 @@
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 const path = require('path');
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+
 const mode = process.env.NODE_ENV;
 
 const webpackRules = [
+  {
+    test: /\.(sa|sc|c)ss$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: true,
+          plugins() {
+            return [
+              autoprefixer(),
+              cssnano({
+                preset: 'default',
+              }),
+            ];
+          },
+        },
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true,
+        },
+      },
+    ],
+  },
   {
     test: /\.(js)$/,
     exclude: [/node_modules/],
@@ -16,6 +51,10 @@ const webpackRules = [
 ];
 
 const webpackPlugins = [
+  new MiniCssExtractPlugin({
+    filename: './css/styles.css',
+    chunkFilename: './css/[id].css',
+  }),
   new CopyWebpackPlugin({
     patterns: [
       {
@@ -37,18 +76,6 @@ const webpackPlugins = [
     ],
   }),
 ];
-
-if (mode === 'production') {
-  webpackPlugins.push(
-    new CompressionPlugin({
-      filename: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
-  );
-}
 
 module.exports = {
   entry: [
@@ -72,6 +99,7 @@ module.exports = {
         parallel: true,
         sourceMap: false,
       }),
+      new OptimizeCSSAssetsPlugin(),
     ],
   },
   plugins: webpackPlugins,

@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export const appConfig = {
   favicons: {
     delivered: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/delivered.png',
@@ -23,8 +25,30 @@ export const appConfig = {
   },
 };
 
-export function handleError(error) {
+export function handleError(error, timerHandle = null) {
+  if (timerHandle) {
+    clearInterval(timerHandle);
+  }
   console.error(error);
+}
+
+export function initOverlay() {
+  const overlayMarkup = `
+    <div class="extension-overlay">
+      <h2><img class="delivery-status-icon">&nbsp;<span class="delivery-status-text"></span></h2>
+      <h3>Page will reload in <span class="time-remaining">5:00</span></h3>
+    </div>
+  `;
+  document.querySelector('.iw_viewport-wrapper').insertAdjacentHTML('afterend', overlayMarkup);
+  const timeNow = dayjs();
+  const timeToReload = dayjs(timeNow).add(appConfig.reloadInterval, 'millisecond');
+  const updateTimer = () => {
+    const timeRemaining = dayjs(timeToReload).diff(dayjs());
+    document.querySelector('.time-remaining').textContent = dayjs(timeRemaining).format('m:ss');
+    // console.log();
+  };
+  const clockTimerHandle = setInterval(updateTimer, 500);
+  return clockTimerHandle;
 }
 
 export function reloadWindow() {
@@ -36,7 +60,7 @@ export function currentService() {
   let returnVal = null;
   domains.forEach(domain => {
     if (window.location.hostname.includes(domain)) {
-      [ returnVal, ] = domain.split('.');
+      [returnVal, ] = domain.split('.');
     }
   });
   return returnVal;

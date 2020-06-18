@@ -1,0 +1,54 @@
+$color-in-transit: #4e8dff;
+$color-out-for-delivery: #d3c000;
+$color-delivered: #148000;
+$color-overlay-text: #fff;
+$color-overlay-bg-black: rgba(0, 0, 0, .85);
+$system-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+.extension-overlay {
+  background-color: $color-overlay-bg-black;
+  border-radius: 1rem;
+  bottom: 2rem;
+  color: $color-overlay-text;
+  font-family: $system-fonts !important;
+  height: 120px;
+  padding: 1.5rem;
+  position: fixed;
+  right: 2rem;
+  width: 300px;
+  z-index: 99999 !important;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    color: $color-overlay-text;
+    margin-bottom: .5rem;
+
+    .delivery-status-icon {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    .delivery-status-text {
+      &.delivered {
+        color: $color-delivered;
+      }
+
+      &.in-transit {
+        color: $color-in-transit;
+      }
+
+      &.out-for-delivery {
+        color: $color-out-for-delivery;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    color: $color-overlay-text;
+  }
+}
