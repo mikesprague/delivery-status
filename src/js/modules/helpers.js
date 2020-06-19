@@ -55,7 +55,7 @@ export function currentService() {
 
 export function initOverlay() {
   const overlayMarkup = `
-    <div class="extension-overlay">
+    <div id="extension-overlay">
       <h2><img class="delivery-status-icon">&nbsp;<span class="delivery-status-text"></span></h2>
       <h3>Page will reload in <span class="time-remaining">5:00</span></h3>
     </div>
