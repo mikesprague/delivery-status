@@ -89,7 +89,7 @@ const initExtension = () => {
           statusText.classList.add('delivered');
           statusText.textContent = 'Delivered';
           clearInterval(clockTimerHandle);
-          document.querySelector('.extension-overlay h3').remove();
+          document.querySelector('#extension-overlay h3').remove();
           updateDelivered();
           clearInterval(timerHandle);
         }
