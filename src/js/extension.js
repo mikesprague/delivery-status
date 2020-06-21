@@ -48,9 +48,10 @@ const updateInTransit = () => {
 
 const initExtension = () => {
   const clockTimerHandle = initOverlay();
+  const extensionOverlayEl = document.querySelector('#extension-overlay');
+  extensionOverlayEl.classList.add('hidden');
   const deliveryService = currentService();
   let deliveryStatus = null;
-  const timerHandle = setInterval(reloadWindow, appConfig.reloadInterval);
   try {
     const doChecks = () => {
       switch (deliveryService) {
@@ -81,6 +82,7 @@ const initExtension = () => {
           break;
         }
       };
+      extensionOverlayEl.classList.remove('hidden');
       const statusImage = document.querySelector('.delivery-status-icon');
       const statusText = document.querySelector('.delivery-status-text');
       appConfig.statusStrings.delivered.forEach(statusString => {
@@ -91,7 +93,6 @@ const initExtension = () => {
           clearInterval(clockTimerHandle);
           document.querySelector('#extension-overlay h3').remove();
           updateDelivered();
-          clearInterval(timerHandle);
         }
       });
       appConfig.statusStrings.outForDelivery.forEach(statusString => {
@@ -113,7 +114,7 @@ const initExtension = () => {
     };
     setTimeout(doChecks, 5000);
   } catch (error) {
-    handleError(error, timerHandle);
+    handleError(error, clockTimerHandle);
   }
 };
 
