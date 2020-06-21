@@ -53,7 +53,7 @@ export function currentService() {
   return returnVal;
 }
 
-const sendDeliveryNotiication = () => {
+export function sendDeliveryNotiication () {
   const notifTitle = 'Delivery Notification';
   const notifBody = 'Your package has been delivered.';
   const notifImg = '/images/delivery-status-icon.png';
@@ -63,7 +63,7 @@ const sendDeliveryNotiication = () => {
   };
   const notif = new Notification(notifTitle, options);
   return notif;
-};
+}
 
 export function initOverlay() {
   const overlayMarkup = `
