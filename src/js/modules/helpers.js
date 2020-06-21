@@ -71,7 +71,7 @@ export function initOverlay() {
   const updateTimer = () => {
     const timeRemaining = dayjs(timeToReload).diff(dayjs());
     document.querySelector('.time-remaining').textContent = dayjs(timeRemaining).format('m:ss');
-    if (timeRemaining === 0) {
+    if (timeRemaining <= 0) {
       clearInterval();
       reloadWindow();
     }
