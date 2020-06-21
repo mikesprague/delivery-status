@@ -88,13 +88,13 @@ const initExtension = () => {
       const statusText = document.querySelector('.delivery-status-text');
       appConfig.statusStrings.delivered.forEach(statusString => {
         if (deliveryStatus.includes(statusString)) {
+          sendDeliveryNotiication();
           statusImage.src = appConfig.favicons.delivered;
           statusText.classList.add('delivered');
           statusText.textContent = 'Delivered';
           clearInterval(clockTimerHandle);
           document.querySelector('#extension-overlay h3').remove();
           updateDelivered();
-          sendDeliveryNotiication();
         }
       });
       appConfig.statusStrings.outForDelivery.forEach(statusString => {
@@ -130,6 +130,9 @@ const initExtension = () => {
 // - [ ] release in mozilla add-ons
 
 document.onreadystatechange = () => {
+  Notification.requestPermission().then((result) => {
+    console.log(result);
+  });
   if (document.readyState === 'complete') {
     initExtension();
   }

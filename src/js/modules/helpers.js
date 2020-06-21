@@ -5,6 +5,7 @@ export const appConfig = {
     delivered: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/delivered.png',
     inTransit: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/in-transit.png',
     outForDelivery: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/out-for-delivery.png',
+    main: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/delivery-status-icon.png',
   },
   statusStrings: {
     delivered: ['delivered'],
@@ -54,15 +55,13 @@ export function currentService() {
 }
 
 export function sendDeliveryNotiication () {
-  const notifTitle = 'Delivery Notification';
-  const notifBody = 'Your package has been delivered.';
-  const notifImg = '/images/delivery-status-icon.png';
+  const title = 'Delivery Status Extension';
+  const body = 'Your package has been delivered.';
   const options = {
-      body: notifBody,
-      icon: notifImg
+      body,
+      icon: appConfig.favicons.main,
   };
-  const notif = new Notification(notifTitle, options);
-  return notif;
+  new Notification(title, options);
 }
 
 export function initOverlay() {
