@@ -5,6 +5,7 @@ import {
   handleError,
   initOverlay,
   reloadWindow,
+  sendDeliveryNotiication,
 } from './modules/helpers';
 
 const updateDelivered = () => {
@@ -93,6 +94,7 @@ const initExtension = () => {
           clearInterval(clockTimerHandle);
           document.querySelector('#extension-overlay h3').remove();
           updateDelivered();
+          sendDeliveryNotiication();
         }
       });
       appConfig.statusStrings.outForDelivery.forEach(statusString => {

@@ -53,6 +53,18 @@ export function currentService() {
   return returnVal;
 }
 
+const sendDeliveryNotiication = () => {
+  const notifTitle = 'Delivery Notification';
+  const notifBody = 'Your package has been delivered.';
+  const notifImg = '/images/delivery-status-icon.png';
+  const options = {
+      body: notifBody,
+      icon: notifImg
+  };
+  const notif = new Notification(notifTitle, options);
+  return notif;
+};
+
 export function initOverlay() {
   const overlayMarkup = `
     <div id="extension-overlay">
