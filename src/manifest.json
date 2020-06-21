@@ -11,6 +11,7 @@
   "permissions": [
     "activeTab",
     "declarativeContent",
+    "notifications",
     "https://*.usps.com/*",
     "https://*.ups.com/*",
     "https://*.fedex.com/*",
