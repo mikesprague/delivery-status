@@ -5,6 +5,10 @@ $color-overlay-text: #fff;
 $color-overlay-bg-black: rgba(0, 0, 0, .85);
 $system-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
+.hidden {
+  display: none !important;
+}
+
 #extension-overlay {
   background-color: $color-overlay-bg-black;
   border-radius: 1rem;
