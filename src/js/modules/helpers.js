@@ -63,7 +63,7 @@ export function initOverlay() {
   const overlayMarkup = `
     <div id="extension-overlay">
       <h2><img class="delivery-status-icon">&nbsp;<span class="delivery-status-text"></span></h2>
-      <h3>Page will reload in <span class="time-remaining">5:00</span></h3>
+      <h3 class="time-remaining">Page will reload in 5:00</h3>
     </div>
   `;
   const deliveryService = currentService();
@@ -77,7 +77,7 @@ export function initOverlay() {
   const updateTimer = () => {
     const timeRemaining = dayjs(timeToReload).diff(dayjs());
     const timeRemainingEl = document.querySelector('.time-remaining');
-    timeRemainingEl.textContent = dayjs(timeRemaining).format('m:ss');
+    timeRemainingEl.textContent = `Page will reload in ${dayjs(timeRemaining).format('m:ss')}`;
     if (timeRemaining <= 0) {
       timeRemainingEl.textContent = 'Reloading ...';
       clearInterval();
