@@ -1,36 +1,5 @@
 import dayjs from 'dayjs';
-
-export const appConfig = {
-  favicons: {
-    delivered: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/delivered.png',
-    inTransit: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/in-transit.png',
-    outForDelivery: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/out-for-delivery.png',
-    main: 'https://raw.githubusercontent.com/mikesprague/delivery-status/master/src/images/delivery-status-icon.png',
-  },
-  statusStrings: {
-    delivered: ['delivered'],
-    inTransit: ['in transit', 'on its way', 'accepted', 'in-transit'],
-    outForDelivery: ['out for delivery'],
-  },
-  titlePrefix: {
-    delivered: 'DELIVERED ',
-    inTransit: 'In Transit',
-    outForDelivery: 'Out For Delivery',
-  },
-  reloadInterval: 300000, // 5 minutes ((1000 * 60) * 5)
-  selectors: {
-    fedEx: '.snapshotController_addr_label.dest',
-    ups: 'stApp_txtPackageStatus',
-    usps: 'div.delivery_status > h2',
-    lasership: '.event-banner-on',
-  },
-  overlaySelectors: {
-    fedEx: '#container',
-    ups: '.iw_viewport-wrapper',
-    usps: '#tracking_page_wrapper',
-    lasership: '#header',
-  }
-};
+import * as settings from './settings';
 
 export function handleError(error, timerHandle = null) {
   if (timerHandle) {
@@ -59,9 +28,35 @@ export function sendDeliveryNotiication () {
   const body = 'Your package has been delivered.';
   const options = {
       body,
-      icon: appConfig.favicons.main,
+      icon: settings.favicons.main,
   };
-  new Notification(title, options);
+
+  const notification = new Notification(title, options);
+  return notification;
+}
+
+export function updateOverlayStatus (deliveryStatus) {
+  const statusImage = document.querySelector('.delivery-status-icon');
+  const statusText = document.querySelector('.delivery-status-text');
+  statusImage.src = settings.favicons[deliveryStatus];
+  statusText.classList.add(settings.statusClass[deliveryStatus]);
+  statusText.textContent = settings.titlePrefix[deliveryStatus];
+  if (deliveryStatus === 'delivered') {
+    document.querySelector('#extension-overlay h3').remove();
+  }
+}
+
+export function updateDeliveryStatus (deliveryStatus) {
+  const linkTags = Array.from(document.querySelectorAll("link[rel*='icon']"));
+  linkTags.forEach(link => {
+    link.remove();
+  });
+  const linkTag = document.createElement('link');
+  linkTag.type = 'image/png';
+  linkTag.rel = 'shortcut icon';
+  linkTag.href = settings.favicons[deliveryStatus];
+  window.document.title = `${settings.titlePrefix[deliveryStatus]} | ${window.document.title}`;
+  document.getElementsByTagName('head')[0].appendChild(linkTag);
 }
 
 export function initOverlay() {
@@ -75,18 +70,26 @@ export function initOverlay() {
   if (deliveryService === 'fedex') {
     document.querySelector('body').innerHTML += overlayMarkup;
   } else {
-    document.querySelector(appConfig.overlaySelectors[deliveryService]).insertAdjacentHTML('afterend', overlayMarkup);
+    document.querySelector(settings.selectors[deliveryService].overlay).insertAdjacentHTML('afterend', overlayMarkup);
   }
   const timeNow = dayjs();
-  const timeToReload = dayjs(timeNow).add(appConfig.reloadInterval, 'millisecond');
+  const timeToReload = dayjs(timeNow).add(settings.reloadInterval, 'millisecond');
   const updateTimer = () => {
     const timeRemaining = dayjs(timeToReload).diff(dayjs());
-    document.querySelector('.time-remaining').textContent = dayjs(timeRemaining).format('m:ss');
+    const timeRemainingEl = document.querySelector('.time-remaining');
+    timeRemainingEl.textContent = dayjs(timeRemaining).format('m:ss');
     if (timeRemaining <= 0) {
+      timeRemainingEl.textContent = 'Reloading ...';
       clearInterval();
       reloadWindow();
     }
   };
   const clockTimerHandle = setInterval(updateTimer, 500);
   return clockTimerHandle;
+}
+
+export function initNotificationPermissionCheck () {
+  Notification.requestPermission().then((result) => {
+    console.log(`Notification permission request: ${result}`);
+  });
 }
