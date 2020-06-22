@@ -1,21 +1,32 @@
-[![Known Vulnerabilities](https://snyk.io/test/github/mikesprague/delivery-status/badge.svg?targetFile=package.json)](https://snyk.io/test/github/mikesprague/clean-start?targetFile=package.json)
-
 # delivery-status
 
-Chrome extension that changes the favicon and title on tracking pages to indicate current delivery status.
+[![Known Vulnerabilities](https://snyk.io/test/github/mikesprague/delivery-status/badge.svg?targetFile=package.json)](https://snyk.io/test/github/mikesprague/clean-start?targetFile=package.json)
+
+## Contents
+
+- [About](#about)
+- [Features](#features)
+- [Build Instructions](#build-instructions)
+- [Screenshots](#screenshots)
+- [License](#license)
+
+## About
+
+Chrome extension that reloads tracking pages every 5 minutes and changes the favicon and title on tracking pages to indicate current delivery status.
+Makes it possible to visually grep delivery status while using other browser tabs (see screenshots).
 
 Currently works with US versions of FedEx, LaserShip, UPS, and USPS tracking pages.
 
-NOTE: This extension will also send a notification upon delivery. It will appear as if you're being asked for
-permission to receive notfications from the source website (tools.usps.com, etc.) but it is for this extension.
-If you choose to ignore or decline notification permission, the extension will otherwise function normally.
+NOTE: This extension will also send a notification upon delivery. You will be asked for permission to reveive notifications on your first visit to each
+tracking site after installing/enabling this extension. It will appear as if you're being asked for permission to receive notfications from the source website
+(e.g. tools.usps.com) but it is for this extension. If you choose to ignore or decline notification permission, the extension will otherwise function normally.
 
 ## Features
 
 - Extension waits 5 seconds to begin as some of the tracking pages render after loading
 - Reloads window every 5 minutes to check for tracking status updates until delivered
-- Adds an overlay to the tracking page with the current status and time left until the window reloads
-- Updates favicon and website title to indicate delivery status (original title remains intact following delivery status) for
+  - Adds overlay to bottom right with time left until window reload and current delivery status
+- Updates favicon/website title to indicate delivery status (original title remains intact following delivery status) for
   - In Transit
   - Out for Delivery
   - Delivered
@@ -25,8 +36,8 @@ If you choose to ignore or decline notification permission, the extension will o
 
 - Install dependencies `npm install`
 - Build extension `npm run build`
-  - Creates a `./public` folder with the extension files to run unpacked
-  - Creates an `./public/extension.zip` file for submitting
+  - Creates a `/public` folder with the extension files to run unpacked
+  - Creates an `/public/extension.zip` file for submitting
 
 ## License
 
