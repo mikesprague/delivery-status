@@ -4,6 +4,7 @@ import '../scss/styles.scss';
 // - [ ] take screenshots and create graphic for dev dashboard
 // - [ ] release in chrome store
 // - [ ] release in mozilla add-ons
+// - [ ] improve url patterns in manifest?
 
 import {
   currentService,
