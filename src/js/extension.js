@@ -55,9 +55,5 @@ const initExtension = () => {
   }
 };
 
-document.onreadystatechange = () => {
-  initNotificationPermissionCheck();
-  if (document.readyState === 'complete') {
-    initExtension();
-  }
-};
+initNotificationPermissionCheck();
+initExtension();

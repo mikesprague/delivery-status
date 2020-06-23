@@ -10,6 +10,7 @@
   "manifest_version": 2,
   "permissions": [
     "activeTab",
+    "tabs",
     "declarativeContent",
     "notifications",
     "https://*.usps.com/*",
