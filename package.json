@@ -1,6 +1,6 @@
 {
   "name": "delivery-status",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Browser extension that reloads tracking pages every 5 minutes and changes the favicon and title to indicate current delivery status",
   "private": true,
   "engines": {
@@ -18,16 +18,16 @@
   },
   "keywords": [],
   "repository": {
-    "url": "https://github.com/mikesprague/chrome-extensions"
+    "url": "https://github.com/mikesprague/delivery-status"
   },
   "author": {
     "name": "Michael Sprague",
     "email": "mikesprague@gmail.com"
   },
-  "homepage": "https://github.com/mikesprague/chrome-extensions",
+  "homepage": "https://github.com/mikesprague/delivery-status",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikesprague/chrome-extensions/issues"
+    "url": "https://github.com/mikesprague/delivery-status/issues"
   },
   "dependencies": {
     "axios": "^0.19.2",
