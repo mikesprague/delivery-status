@@ -12,7 +12,7 @@
 
 ## About
 
-Chrome extension that reloads tracking pages every 5 minutes and changes the favicon and title on tracking pages to indicate current delivery status.
+Browser extension that reloads tracking pages every 5 minutes and changes the favicon and title to indicate current delivery status.
 Makes it possible to visually grep delivery status while using other browser tabs (see screenshots).
 
 Currently works with US versions of FedEx, LaserShip, UPS, and USPS tracking pages.
