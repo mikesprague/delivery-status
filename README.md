@@ -37,7 +37,7 @@ tracking site after installing/enabling this extension. It will appear as if you
 - Install dependencies `npm install`
 - Build extension `npm run build`
   - Creates a `/public` folder with the extension files to run unpacked
-  - Creates an `/public/extension.zip` file for submitting
+  - Creates an `/public/delivery-status-extension.zip` file for submitting
 
 ## License
 
