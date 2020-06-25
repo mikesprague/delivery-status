@@ -23,9 +23,45 @@ export function currentService() {
   return returnVal;
 }
 
+export function getTrackingNumber (deliveryService) {
+  const selector = settings.selectors[deliveryService].trackingNumber;
+  const trackingNumber = document.querySelector(selector).textContent.trim();
+
+  return trackingNumber;
+}
+
+export function normalizeServiceName (deliveryService) {
+  let returnName = null;
+  switch (deliveryService) {
+    case 'fedex': {
+      returnName = 'FedEx';
+      break;
+    }
+    case 'lasership': {
+      returnName = 'LaserShip';
+      break;
+    }
+    case 'ups': {
+      returnName = 'UPS';
+      break;
+    }
+    case 'usps': {
+      returnName = 'USPS';
+      break;
+    }
+    default: {
+      // some
+      break;
+    }
+  }
+  return returnName;
+}
+
 export function sendDeliveryNotiication () {
+  const deliveryService = currentService();
+  const trackingNumber = getTrackingNumber(deliveryService);
   const title = 'Delivery Status Extension';
-  const body = 'Your package has been delivered.';
+  const body = `${normalizeServiceName(deliveryService)} package ${trackingNumber} has been delivered.`;
   const options = {
       body,
       icon: settings.favicons.main,

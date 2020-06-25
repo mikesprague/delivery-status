@@ -5,18 +5,22 @@ export const selectors = {
   fedex: {
     deliveryStatus: '.snapshotController_addr_label.dest',
     overlay: '#container',
+    trackingNumber: 'div.RedesignedDetailTitleBarTVC.shipmentTitleBar_track_nick_section > label > h1',
   },
   lasership: {
     deliveryStatus: '.event-banner-on',
     overlay: '#header',
+    trackingNumber: '.section > div > div:nth-child(1) > div.col-md-5 > p:nth-child(3) > b',
   },
   ups: {
     deliveryStatus: '#stApp_txtPackageStatus',
     overlay: '.iw_viewport-wrapper',
+    trackingNumber: '#stApp_lblTrackingNumber',
   },
   usps: {
     deliveryStatus: 'div.delivery_status > h2 > strong',
     overlay: '#tracking_page_wrapper',
+    trackingNumber: 'h3.tracking_number > span.tracking-number',
   },
 };
 
@@ -30,7 +34,7 @@ export const favicons = {
 // list of strings to look for that indicate current status
 export const statusStrings = {
   delivered: ['delivered'],
-  inTransit: ['in transit', 'on its way', 'accepted', 'in-transit'],
+  inTransit: ['in transit', 'on its way', 'accepted', 'in-transit', 'currently awaiting package'],
   outForDelivery: ['out for delivery'],
 };
 
