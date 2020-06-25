@@ -1,9 +1,7 @@
 import '../scss/styles.scss';
 
-// - [x] add build steps to readme
 // - [ ] take screenshots and create graphic for dev dashboard
 // - [ ] release in chrome store
-// - [ ] release in mozilla add-ons
 // - [ ] improve url patterns in manifest?
 
 import {
