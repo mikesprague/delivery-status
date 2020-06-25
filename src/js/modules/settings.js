@@ -15,7 +15,7 @@ export const selectors = {
     overlay: '.iw_viewport-wrapper',
   },
   usps: {
-    deliveryStatus: 'div.delivery_status > h2',
+    deliveryStatus: 'div.delivery_status > h2 > strong',
     overlay: '#tracking_page_wrapper',
   },
 };
