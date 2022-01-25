@@ -4,8 +4,8 @@
   "description": "Browser extension that reloads tracking pages every 5 minutes and changes the favicon and title to indicate current delivery status",
   "private": true,
   "engines": {
-    "node": ">= 12.x",
-    "npm": ">= 6.x"
+    "node": ">= 16.x",
+    "npm": ">= 7.x"
   },
   "scripts": {
     "build": "npm run clean && npm run webpack && npm run zip",
@@ -30,11 +30,10 @@
     "url": "https://github.com/mikesprague/delivery-status/issues"
   },
   "dependencies": {
-    "axios": "^0.21.2",
-    "cross-env": "^7.0.2",
-    "dayjs": "^1.8.34",
-    "dotenv": "^8.2.0",
-    "snyk": "^1.381.1"
+    "axios": "^0.25.0",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.10.7",
+    "dotenv": "^14.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -59,13 +58,14 @@
     "eslint-plugin-security": "^1.4.0",
     "file-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.10.0",
-    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "prettier": "^2.0.5",
     "prettier-eslint": "^11.0.0",
+    "sass": "latest",
     "sass-lint": "^1.13.1",
     "sass-loader": "^9.0.3",
+    "snyk": "^1.836.0",
     "terser-webpack-plugin": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
