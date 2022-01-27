@@ -3,9 +3,9 @@ export const imagePath = 'https://raw.githubusercontent.com/mikesprague/delivery
 // selectors used to determine delivery status/where in html to add overlay
 export const selectors = {
   fedex: {
-    deliveryStatus: '.snapshotController_addr_label.dest',
+    deliveryStatus: 'trk-shared-detail-page-default > div > div > section:nth-child(1) > trk-shared-shipment-status-text > div > h3:nth-child(2)',
     overlay: '#container',
-    trackingNumber: 'div.RedesignedDetailTitleBarTVC.shipmentTitleBar_track_nick_section > label > h1',
+    trackingNumber: 'trk-shared-detail-page-default > div > div > section:nth-child(1) > div.detail-page-default__shipment-identifier-and-icons.mb-6 > div.detail-page-default__shipment-identifier > trk-shared-shipment-identifier > div > div',
   },
   lasership: {
     deliveryStatus: '.event-banner-on',

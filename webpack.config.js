@@ -1,8 +1,6 @@
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -16,22 +14,12 @@ const webpackRules = [
       {
         loader: 'css-loader',
         options: {
+          importLoaders: true,
           sourceMap: true,
         },
       },
       {
         loader: 'postcss-loader',
-        options: {
-          sourceMap: true,
-          plugins() {
-            return [
-              autoprefixer(),
-              cssnano({
-                preset: 'default',
-              }),
-            ];
-          },
-        },
       },
       {
         loader: 'sass-loader',
@@ -59,8 +47,7 @@ const webpackPlugins = [
     patterns: [
       {
         from: './src/*.json',
-        to: './',
-        flatten: true,
+        to: './[name][ext]',
         force: true,
       },
     ],
@@ -69,8 +56,7 @@ const webpackPlugins = [
     patterns: [
       {
         from: './src/images/**/*',
-        to: './images',
-        flatten: true,
+        to: './images/[name][ext]',
         force: true,
       },
     ],
@@ -97,9 +83,8 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        sourceMap: false,
       }),
-      new OptimizeCSSAssetsPlugin(),
+      new CssMinimizerPlugin(),
     ],
   },
   plugins: webpackPlugins,
