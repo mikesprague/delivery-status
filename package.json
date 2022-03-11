@@ -1,6 +1,6 @@
 {
   "name": "delivery-status",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Browser extension that reloads tracking pages every 5 minutes and changes the favicon and title to indicate current delivery status",
   "private": true,
   "engines": {
@@ -10,8 +10,6 @@
   "scripts": {
     "build": "npm run clean && npm run webpack && npm run zip",
     "clean": "rm -rf ./public",
-    "prepublish": "npm run snyk-protect",
-    "snyk-protect": "snyk protect",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "cross-env NODE_ENV=production webpack --color",
     "zip": "cd public && zip -r delivery-status-extension.zip ./"
