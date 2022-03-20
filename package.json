@@ -30,7 +30,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "cross-env": "^7.0.3",
-    "dayjs": "^1.10.8",
+    "dayjs": "^1.11.0",
     "dotenv": "^16.0.0"
   },
   "devDependencies": {
