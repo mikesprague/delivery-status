@@ -6,7 +6,7 @@
   "icons": {
     "128": "/images/delivery-status-icon.png"
   },
-  "version": "0.5.0",
+  "version": "0.6.0",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
@@ -23,14 +23,13 @@
   ],
   "content_scripts": [{
     "matches": [
-      "https://tools.usps.com/go/TrackConfirmAction_input*",
-      "https://wwwapps.ups.com/WebTracking*",
-      "https://www.ups.com/*",
-      "https://www.fedex.com/*",
-      "https://www.lasership.com/track*",
-      "https://t.lasership.com/Track*"
+      "https://*.usps.com/go/TrackConfirmAction_input*",
+      "https://*.ups.com/WebTracking*",
+      "https://*.ups.com/*",
+      "https://*.fedex.com/*",
+      "https://*.lasership.com/Track*"
     ],
-    "js": ["/js/bundle.js"],
-    "css": ["/css/styles.css"]
+    "js": ["js/bundle.js"],
+    "css": ["css/styles.css"]
   }]
 }
