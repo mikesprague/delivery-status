@@ -57,7 +57,7 @@ export function normalizeServiceName (deliveryService) {
   return returnName;
 }
 
-export function sendDeliveryNotiication () {
+export function sendDeliveryNotification () {
   const deliveryService = currentService();
   const trackingNumber = getTrackingNumber(deliveryService);
   const title = 'Delivery Status Extension';

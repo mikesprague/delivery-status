@@ -1,15 +1,11 @@
 import '../scss/styles.scss';
 
-// - [ ] take screenshots and create graphic for dev dashboard
-// - [ ] release in chrome store
-// - [ ] improve url patterns in manifest?
-
 import {
   currentService,
   handleError,
   initNotificationPermissionCheck,
   initOverlay,
-  sendDeliveryNotiication,
+  sendDeliveryNotification,
   updateDeliveryStatus,
   updateOverlayStatus,
 } from './modules/helpers';
@@ -28,7 +24,7 @@ const initExtension = () => {
       extensionOverlayEl.classList.remove('hidden');
       settings.statusStrings.delivered.forEach(statusString => {
         if (deliveryStatus.includes(statusString)) {
-          sendDeliveryNotiication();
+          sendDeliveryNotification();
           clearInterval(clockTimerHandle);
           updateOverlayStatus('delivered');
           updateDeliveryStatus('delivered');
