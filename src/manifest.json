@@ -7,12 +7,14 @@
     "128": "/images/delivery-status-icon.png"
   },
   "version": "0.5.0",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "permissions": [
     "activeTab",
     "tabs",
     "declarativeContent",
-    "notifications",
+    "notifications"
+  ],
+  "host_permissions": [
     "https://*.usps.com/*",
     "https://*.ups.com/*",
     "https://*.fedex.com/*",
@@ -25,7 +27,8 @@
       "https://wwwapps.ups.com/WebTracking*",
       "https://www.ups.com/*",
       "https://www.fedex.com/*",
-      "https://www.lasership.com/track*"
+      "https://www.lasership.com/track*",
+      "https://t.lasership.com/Track"
     ],
     "js": ["/js/bundle.js"],
     "css": ["/css/styles.css"]
