@@ -24,13 +24,15 @@ $system-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-San
 
   &>h2 {
     color: $color-overlay-text;
-    font-size: 2rem !important;
+    font-size: 1.4rem !important;
+    line-height: 2 !important;
     font-weight: 500 !important;
     margin-bottom: .5rem;
     text-align: center;
 
     span {
-      font-size: 2rem !important;
+      font-size: 1.4rem !important;
+      line-height: 2 !important;
       font-weight: 500 !important;
       width: 100% !important;
     }
