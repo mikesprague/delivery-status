@@ -28,7 +28,7 @@
       "https://www.ups.com/*",
       "https://www.fedex.com/*",
       "https://www.lasership.com/track*",
-      "https://t.lasership.com/Track"
+      "https://t.lasership.com/Track*"
     ],
     "js": ["/js/bundle.js"],
     "css": ["/css/styles.css"]
