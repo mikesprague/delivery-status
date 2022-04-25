@@ -8,8 +8,8 @@ export const selectors = {
     trackingNumber: 'trk-shared-detail-page-default > div > div > section:nth-child(1) > div.detail-page-default__shipment-identifier-and-icons.mb-6 > div.detail-page-default__shipment-identifier > trk-shared-shipment-identifier > div > div',
   },
   lasership: {
-    deliveryStatus: '.event-banner-on',
-    overlay: '#header',
+    deliveryStatus: 'div.col.text-end > h5',
+    overlay: '.container',
     trackingNumber: '.section > div > div:nth-child(1) > div.col-md-5 > p:nth-child(3) > b',
   },
   ups: {
