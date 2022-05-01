@@ -28,7 +28,7 @@
     "url": "https://github.com/mikesprague/delivery-status/issues"
   },
   "dependencies": {
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.1",
     "dotenv": "^16.0.0"
