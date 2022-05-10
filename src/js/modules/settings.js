@@ -34,7 +34,15 @@ export const favicons = {
 // list of strings to look for that indicate current status
 export const statusStrings = {
   delivered: ['delivered'],
-  inTransit: ['in transit', 'on its way', 'accepted', 'in-transit', 'currently awaiting package'],
+  inTransit: [
+    'in transit',
+    'on the way',
+    'on its way',
+    'accepted',
+    'in-transit',
+    'currently awaiting package',
+    'label created'
+  ],
   outForDelivery: ['out for delivery'],
 };
 
