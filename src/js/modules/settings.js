@@ -13,9 +13,9 @@ export const selectors = {
     trackingNumber: '.section > div > div:nth-child(1) > div.col-md-5 > p:nth-child(3) > b',
   },
   ups: {
-    deliveryStatus: '#stApp_txtPackageStatus',
+    deliveryStatus: 'th.ups-progress_milestone_current_cell + td',
     overlay: '.iw_viewport-wrapper',
-    trackingNumber: '#stApp_lblTrackingNumber',
+    trackingNumber: '#stApp_trackingNumber',
   },
   usps: {
     deliveryStatus: 'div.delivery_status > h2 > strong',
