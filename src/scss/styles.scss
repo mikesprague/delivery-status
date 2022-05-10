@@ -28,6 +28,7 @@ $system-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-San
     line-height: 2 !important;
     font-weight: 500 !important;
     margin-bottom: .5rem;
+    margin-top: 0 !important;
     text-align: center;
 
     span {
@@ -40,10 +41,12 @@ $system-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-San
     .delivery-status-icon {
       height: 2rem;
       width: 2rem;
+      margin-right: 1rem !important;
     }
 
     .delivery-status-text {
       display: inline;
+      margin-left: 0 !important;
 
       &.delivered {
         color: $color-delivered;
@@ -60,9 +63,10 @@ $system-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-San
   }
 
   &>h3 {
-    color: $color-overlay-text;
+    color: $color-overlay-text !important;
     font-size: 1.4rem !important;
     font-weight: 700 !important;
     text-align: center;
+    margin: 0 !important;
   }
 }
