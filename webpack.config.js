@@ -1,7 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV;
@@ -27,13 +26,23 @@ const webpackRules = [
           sourceMap: true,
         },
       },
+      {
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'css',
+          minify: true
+        }
+      },
     ],
   },
   {
     test: /\.(js)$/,
     exclude: [/node_modules/],
     use: [{
-      loader: 'babel-loader',
+      loader: 'esbuild-loader',
+      options: {
+        target: 'esnext'
+      }
     }],
   },
 ];
@@ -77,15 +86,12 @@ module.exports = {
     rules: webpackRules,
   },
   optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
     minimizer: [
-      new TerserPlugin({
-        parallel: true,
-      }),
-      new CssMinimizerPlugin(),
-    ],
+      new ESBuildMinifyPlugin({
+        target: 'esnext',
+        css: true,
+      })
+    ]
   },
   plugins: webpackPlugins,
 };
