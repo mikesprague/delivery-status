@@ -33,7 +33,7 @@ export const favicons = {
 
 // list of strings to look for that indicate current status
 export const statusStrings = {
-  delivered: ['delivered'],
+  delivered: [ 'delivered' ],
   inTransit: [
     'in transit',
     'on the way',
@@ -41,9 +41,10 @@ export const statusStrings = {
     'accepted',
     'in-transit',
     'currently awaiting package',
-    'label created'
+    'label created',
+    'departed',
   ],
-  outForDelivery: ['out for delivery'],
+  outForDelivery: [ 'out for delivery' ],
 };
 
 // text will appear in title and on overlay
