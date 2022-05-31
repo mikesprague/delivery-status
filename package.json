@@ -1,11 +1,11 @@
 {
   "name": "delivery-status",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Browser extension that reloads tracking pages every 5 minutes and changes the favicon and title to indicate current delivery status",
   "private": true,
   "engines": {
     "node": ">= 16.x",
-    "npm": ">= 7.x"
+    "npm": ">= 8.x"
   },
   "scripts": {
     "build": "npm run clean && npm run webpack && npm run zip",
