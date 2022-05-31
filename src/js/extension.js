@@ -22,26 +22,19 @@ const initExtension = () => {
       const deliveryStatusEl = document.querySelector(settings.selectors[deliveryService].deliveryStatus);
       deliveryStatus = deliveryStatusEl.textContent.trim().toLowerCase();
       extensionOverlayEl.classList.remove('hidden');
-      settings.statusStrings.delivered.forEach(statusString => {
-        if (deliveryStatus.includes(statusString)) {
-          sendDeliveryNotification();
-          clearInterval(clockTimerHandle);
-          updateOverlayStatus('delivered');
-          updateDeliveryStatus('delivered');
-        }
-      });
-      settings.statusStrings.outForDelivery.forEach(statusString => {
-        if (deliveryStatus.includes(statusString)) {
-          updateOverlayStatus('outForDelivery');
-          updateDeliveryStatus('outForDelivery');
-        }
-      });
-      settings.statusStrings.inTransit.forEach(statusString => {
-        if (deliveryStatus.includes(statusString)) {
-          updateOverlayStatus('inTransit');
-          updateDeliveryStatus('inTransit');
-        }
-      });
+      const statuses = ['inTransit', 'outForDelivery', 'delivered'];
+      statuses.forEach(status => {
+        settings.statusStrings[status].forEach(statusString => {
+          if (deliveryStatus.includes(statusString)) {
+            if (status === 'delivered') {
+              sendDeliveryNotification();
+              clearInterval(clockTimerHandle);
+            }
+            updateOverlayStatus(status);
+            updateDeliveryStatus(status);
+          }
+        });
+      })
     };
     setTimeout(doChecks, 5000);
   } catch (error) {
