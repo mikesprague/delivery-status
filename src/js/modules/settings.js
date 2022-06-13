@@ -3,9 +3,9 @@ export const imagePath = 'https://raw.githubusercontent.com/mikesprague/delivery
 // selectors used to determine delivery status/where in html to add overlay
 export const selectors = {
   fedex: {
-    deliveryStatus: 'trk-shared-detail-page-default > div > div > section:nth-child(1) > trk-shared-shipment-status-text > div > h3:nth-child(2)',
-    overlay: '#container',
-    trackingNumber: 'trk-shared-detail-page-default > div > div > section:nth-child(1) > div.detail-page-default__shipment-identifier-and-icons.mb-6 > div.detail-page-default__shipment-identifier > trk-shared-shipment-identifier > div > div',
+    deliveryStatus: 'trk-shared-shipment-status-text > div > div > h3:nth-child(2)',
+    overlay: '.app',
+    trackingNumber: '#tab_panel_3 > div > trk-shared-shipment-facts > trk-shared-key-value-list > ul > li:nth-child(1) > div',
   },
   lasership: {
     deliveryStatus: 'div.col.text-end > h5',
@@ -44,7 +44,7 @@ export const statusStrings = {
     'label created',
     'departed',
   ],
-  outForDelivery: [ 'out for delivery' ],
+  outForDelivery: [ 'out for delivery', 'on fedex vehicle for delivery' ],
 };
 
 // text will appear in title and on overlay
