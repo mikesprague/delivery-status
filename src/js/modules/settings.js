@@ -43,6 +43,7 @@ export const statusStrings = {
     'currently awaiting package',
     'label created',
     'departed',
+    'arrived at',
   ],
   outForDelivery: [ 'out for delivery', 'on fedex vehicle for delivery' ],
 };
