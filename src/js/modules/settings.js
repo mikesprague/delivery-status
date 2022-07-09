@@ -44,6 +44,7 @@ export const statusStrings = {
     'label created',
     'departed',
     'arrived at',
+    'in possession',
   ],
   outForDelivery: [ 'out for delivery', 'on fedex vehicle for delivery' ],
 };
