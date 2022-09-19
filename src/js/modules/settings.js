@@ -18,9 +18,9 @@ export const selectors = {
     trackingNumber: '#stApp_trackingNumber',
   },
   usps: {
-    deliveryStatus: 'div.delivery_status > h2 > strong',
+    deliveryStatus: 'div.tb-step.current-step p.tb-status',
     overlay: '#tracking_page_wrapper',
-    trackingNumber: 'h3.tracking_number > span.tracking-number',
+    trackingNumber: 'div.tracking-wrapper > span',
   },
 };
 
