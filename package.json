@@ -55,7 +55,7 @@
     "eslint-plugin-prettier": "4.2.1",
     "file-loader": "6.2.0",
     "mini-css-extract-plugin": "2.6.1",
-    "postcss": "8.4.16",
+    "postcss": "8.4.17",
     "postcss-loader": "7.0.1",
     "prettier": "2.7.1",
     "prettier-eslint": "15.0.1",
