@@ -31,7 +31,7 @@
     "axios": "0.27.2",
     "cross-env": "7.0.3",
     "dayjs": "1.11.5",
-    "dotenv": "16.0.2"
+    "dotenv": "16.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
