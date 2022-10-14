@@ -40,6 +40,8 @@ export const statusStrings = {
     'on its way',
     'accepted',
     'in-transit',
+    'pre-shipment',
+    'pre shipment',
     'currently awaiting package',
     'moving through network',
     'label created',
