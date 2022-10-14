@@ -138,15 +138,9 @@
     }
   },
   "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all",
-    "arrowParens": "always",
     "semi": true,
+    "singleQuote": true,
     "tabWidth": 2,
-    "plugins": [
-      "all"
-    ],
-    "printWidth": 120
-  },
-  "snyk": true
+    "trailingComma": "all"
+  }
 }
