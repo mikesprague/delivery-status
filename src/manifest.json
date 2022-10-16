@@ -23,7 +23,7 @@
   ],
   "content_scripts": [{
     "matches": [
-      "https://*.usps.com/go/TrackConfirmAction_input*",
+      "https://*.usps.com/go/TrackConfirmAction*",
       "https://*.ups.com/WebTracking*",
       "https://*.ups.com/*",
       "https://*.fedex.com/*",
