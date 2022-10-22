@@ -6,7 +6,7 @@
   "icons": {
     "128": "/images/delivery-status-icon.png"
   },
-  "version": "0.9.3",
+  "version": "0.9.4",
   "manifest_version": 3,
   "permissions": [
     "activeTab",
