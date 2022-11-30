@@ -44,6 +44,7 @@
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.2",
     "cssnano": "5.1.14",
+    "cz-conventional-changelog": "^3.3.0",
     "esbuild-loader": "2.20.0",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
@@ -142,5 +143,10 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "all"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
