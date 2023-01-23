@@ -37,7 +37,7 @@
     "@babel/core": "7.20.12",
     "@babel/eslint-parser": "7.19.1",
     "@babel/preset-env": "7.20.2",
-    "@babel/runtime": "7.20.7",
+    "@babel/runtime": "7.20.13",
     "@fullhuman/postcss-purgecss": "5.0.0",
     "autoprefixer": "10.4.13",
     "compression-webpack-plugin": "10.0.0",
