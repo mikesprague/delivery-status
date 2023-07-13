@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.22.9",
-    "@babel/eslint-parser": "7.22.7",
+    "@babel/eslint-parser": "7.22.9",
     "@babel/preset-env": "7.22.9",
     "@babel/runtime": "7.22.6",
     "@fullhuman/postcss-purgecss": "5.0.0",
