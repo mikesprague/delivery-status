@@ -45,7 +45,7 @@
     "css-loader": "6.8.1",
     "cssnano": "6.0.1",
     "cz-conventional-changelog": "^3.3.0",
-    "esbuild-loader": "3.0.1",
+    "esbuild-loader": "3.1.0",
     "eslint": "8.46.0",
     "eslint-config-prettier": "8.9.0",
     "eslint-config-stylelint": "19.1.0",
