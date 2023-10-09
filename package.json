@@ -46,7 +46,7 @@
     "cssnano": "6.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild-loader": "4.0.2",
-    "eslint": "8.50.0",
+    "eslint": "8.51.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-config-stylelint": "20.0.0",
     "eslint-plugin-babel": "5.3.1",
